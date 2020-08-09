@@ -58,6 +58,8 @@ struct PostCell: View {
                        .buttonStyle(BorderlessButtonStyle())
                        }
                    }
+            
+            //显示文字部分
             Text(post.text)
                 .font(.system(size:17))
             
@@ -92,10 +94,10 @@ struct PostCell: View {
                 }
                 Spacer()
             }
-            Rectangle()
-                .padding(.horizontal, -15)
-                .frame(height: 10)
-                .foregroundColor(Color(red: 238 / 255, green: 238 / 255, blue: 238 / 255))
+            Rectangle()//矩形分隔线
+                .padding(.horizontal, -15)//因为所在的矩形设置了15的padding，所以需设置为-15
+                .frame(height: 10)//高度
+                .foregroundColor(Color(red: 238 / 255, green: 238 / 255, blue: 238 / 255))//灰色
         }
         .padding(.horizontal,15)
         .padding(.top, 15)

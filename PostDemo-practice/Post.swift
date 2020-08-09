@@ -27,7 +27,7 @@ struct Post: Codable{//实现了Codable协议，支持JSON
     var commentCount: Int
     var likeCount: Int
     var isLiked: Bool
-    
+    //不确定属性是否可变时，可先试用let，编辑器提示错误时再改为var
    
     
 }
