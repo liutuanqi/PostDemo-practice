@@ -14,7 +14,7 @@ struct  PostList:Codable {
 }
 
 
-//Data Model，一条微博的数据模型，不可见
+//Data Model，一条微博的数据模型，不可见(数据模型，所以不可见)
 struct Post: Codable{//实现了Codable协议，支持JSON
     let id:Int
     let avatar: String // 头像、图片名称
