@@ -16,7 +16,7 @@ struct PostImageCell: View {
     let width: CGFloat
     
     var body: some View {
-        Group{
+        Group{//照片显示规则设置
             if images.count == 1 {
                     loadImage(name: images[0])
                                          .resizable()
@@ -50,7 +50,7 @@ struct PostImageCell: View {
     }
 }
 
-struct PostImageCellRow: View{
+struct PostImageCellRow: View{//写了一个view，即一行
     let images: [String]
     let width: CGFloat
     var body: some View{
@@ -60,7 +60,7 @@ struct PostImageCellRow: View{
                 .resizable()
                 .scaledToFill()
                 .frame(width:(self.width - kImageSpace * CGFloat(self.images.count - 1))/CGFloat(self.images.count),
-                           height: (self.width - kImageSpace * CGFloat(self.images.count - 1))/CGFloat(self.images.count))
+                           height: (self.width - kImageSpace * CGFloat(self.images.count - 1))/CGFloat(self.images.count))//闭包里边访问属性要加self
                 .clipped()
                 
             }
