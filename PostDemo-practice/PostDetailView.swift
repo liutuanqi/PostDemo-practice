@@ -20,7 +20,7 @@ struct PostDetailView: View {
                 Text("评论\(i)")
             }
         }
-        .navigationBarTitle("详情", displayMode: .inline)
+        .navigationBarTitle("详情", displayMode: .inline) //只显示小标题
     }
 }
 

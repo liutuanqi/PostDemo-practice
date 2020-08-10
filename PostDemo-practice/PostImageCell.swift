@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-private let kImageSpace: CGFloat = 6
+private let kImageSpace: CGFloat = 6 //图片间距，设置为常量，方便修改
 
 struct PostImageCell: View {
     

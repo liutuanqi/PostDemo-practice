@@ -5,7 +5,8 @@
 //  Created by Tuanqi Liu on 2020/7/5.
 //  Copyright © 2020 Tuanqi Liu. All rights reserved.
 //
-
+//  写一个view，用来显示首页上的NavigationBar
+//
 import SwiftUI
 
 private let kLabelWidth: CGFloat = 60
@@ -37,7 +38,7 @@ struct HomeNavigationBar: View {
                         .bold()
                         .frame(width: kLabelWidth, height: kButtonHeight)
                         .padding(.top,5)
-                        .opacity(Double(1 - leftPercent * 0.5)) //透明度
+                        .opacity(Double(1 - leftPercent * 0.5)) //两个字的透明度
                         .onTapGesture {
                             withAnimation{ //滑条的动画
                                  self.leftPercent = 0
@@ -49,7 +50,7 @@ struct HomeNavigationBar: View {
                         .bold()
                         .frame(width: kLabelWidth, height: kButtonHeight)
                         .padding(.top,5)
-                        .opacity(Double(0.5 + leftPercent * 0.5))
+                        .opacity(Double(0.5 + leftPercent * 0.5)) //两个字的透明度
                         .onTapGesture {
                             withAnimation{
                                 self.leftPercent = 1

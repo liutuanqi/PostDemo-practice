@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-
+                         //尖括号里边表示“泛型”，遵循view协议
 struct HScrollViewController<Content: View>: UIViewControllerRepresentable {
     let pageWidth: CGFloat
     let contentSize: CGSize
@@ -29,8 +29,9 @@ struct HScrollViewController<Content: View>: UIViewControllerRepresentable {
         Coordinator(self)
     }
     
+    
     func makeUIViewController(context: Context) -> UIViewController {
-        let scrollView = UIScrollView()
+        let scrollView = UIScrollView() //生成一个scrollview
         scrollView.bounces = false
         scrollView.isPagingEnabled = true
         scrollView.showsVerticalScrollIndicator = false
@@ -42,7 +43,7 @@ struct HScrollViewController<Content: View>: UIViewControllerRepresentable {
         vc.view.addSubview(scrollView)
         
         let host = UIHostingController(rootView: content)
-        vc.addChild(host)
+        vc.addChild(host) //添加孩子，两个uiview建立层级关系
         scrollView.addSubview(host.view)
         host.didMove(toParent: vc)
         context.coordinator.host = host
