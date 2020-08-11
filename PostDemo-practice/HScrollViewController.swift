@@ -13,6 +13,9 @@ struct HScrollViewController<Content: View>: UIViewControllerRepresentable {
     let contentSize: CGSize
     let content: Content
     @Binding var leftPercent: CGFloat
+    //@state通常修饰自己使用的属性，当属性发生了变化，SwiftUI会根据新的属性值重新创建视图，刷新
+    //或者将属性传给子View，和子view的属性绑定在一块，子view需要使用@binding
+    //视图的属性传至子节点中，但是又不能直接的传递给子节点，因为在 Swift 中值的传递形式是值类型传递方式，也就是传递给子节点的是一个拷贝过的值，@Binding 修饰器修饰后，属性变成了一个引用类型，传递变成了引用传递，这样父子视图的状态就能关联起来了
     
     init(pageWidth: CGFloat,
          contentSize: CGSize,
@@ -59,6 +62,7 @@ struct HScrollViewController<Content: View>: UIViewControllerRepresentable {
         context.coordinator.host.view.frame = CGRect(origin: .zero, size: contentSize)
     }
     
+            //基本上所有uikit的类都继承自NSobject
     class Coordinator: NSObject, UIScrollViewDelegate {
         let parent: HScrollViewController
         var scrollView: UIScrollView!
@@ -69,7 +73,7 @@ struct HScrollViewController<Content: View>: UIViewControllerRepresentable {
         }
         
         func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-            withAnimation {
+            withAnimation { //橙色小条的动画
                 parent.leftPercent = scrollView.contentOffset.x < parent.pageWidth * 0.5 ? 0 : 1
             }
         }
