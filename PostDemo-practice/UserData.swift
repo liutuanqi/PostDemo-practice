@@ -17,7 +17,7 @@ class UserData: ObservableObject {
     @Published var recommendPostList: PostList = loadPostListData("PostListData_recommend_1.json")
     @Published var hotPostList: PostList = loadPostListData("PostListData_hot_1.json")
     
-    private var recommendPostDic: [Int:Int] = [:]//id:index
+    private var recommendPostDic: [Int:Int] = [:]//id:index，字典，用于存储某条微博的id、在列表中的下标
     private var hotPostDic: [Int:Int] = [:]//id:index
     init(){
         for  i in 0..<recommendPostList.list.count {
@@ -44,18 +44,18 @@ extension UserData{
     }
     
     func post(forID id:Int) -> Post? {
-        if let index = recommendPostDic[id]{
+        if let index = recommendPostDic[id]{   //let关键字，指：如果存在index，就执行花括号内的代码
             return recommendPostList.list[index]
         }
         if let index = hotPostDic[id]{
-            return hotPostList.list[index]
+            return hotPostList.list[index] //如果找到了某条微博，就从列表中取出微博，并返回
         }
-        return nil
+        return nil  //如果不存在index，返回nil
     }
     
-    func update(_ post:Post)  {
+    func update(_ post:Post)  {  //外部参数为空，用下划线，内部参数post
         if let index = recommendPostDic[post.id]{
-            recommendPostList.list[index] = post
+            recommendPostList.list[index] = post  //给数组的某个元素赋值，即更新它
         }
         if let index = hotPostDic[post.id]{
             hotPostList.list[index] = post
