@@ -11,6 +11,8 @@ import SwiftUI
 struct PostListView: View {
     let category: PostListCategory
     
+    
+    //被下边的userdata代替，使用环境对象
 //    var postList: PostList{
 //        switch category {
 //        case .recommend:

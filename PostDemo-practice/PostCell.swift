@@ -12,14 +12,14 @@ struct PostCell: View {
     let post:Post
     
     var bindingPost: Post {
-        userData.post(forID: post.id)!
+        userData.post(forID: post.id)! //这条微博一定存在，所以可以加！
     }
     
     @State var presentComment: Bool = false
     @EnvironmentObject var userData: UserData
     
     var body: some View {
-        var post = bindingPost
+        var post = bindingPost //局部变量post，覆盖原来的变量
         return VStack{
             HStack(spacing:5){
                        Image(uiImage: UIImage(named:post.avatar)!)//因为返回值是可选类型，加！要小心
